@@ -243,8 +243,8 @@ const LinerTeamsLanding: React.FC = () => {
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
-              <button onClick={() => scrollToSection('segments')} className="text-gray-600 hover:text-gray-900 transition">
-                솔루션
+              <button onClick={() => scrollToSection('about-liner')} className="text-gray-600 hover:text-gray-900 transition">
+                라이너 소개
               </button>
               <button onClick={() => scrollToSection('about')} className="text-gray-600 hover:text-gray-900 transition">
                 기능
@@ -330,35 +330,62 @@ const LinerTeamsLanding: React.FC = () => {
         </div>
       </section>
 
-      {/* Segments Section */}
-      <section id="segments" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              모든 팀을 위한 AI 리서치 솔루션
-            </h2>
-            <p className="text-lg text-gray-600">
-              당신의 팀에 맞는 완벽한 솔루션을 찾아보세요
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {segments.map((segment, index) => (
-              <div 
-                key={index}
-                className="group bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-2xl hover:border-blue-500 transition-all duration-300 cursor-pointer"
-              >
-                <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition">
-                  {segment.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  {segment.title}
-                </h3>
-                <p className="text-gray-600">
-                  {segment.description}
-                </p>
-              </div>
-            ))}
+      {/* LINER Introduction Section */}
+      <section id="about-liner" className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-12">
+            {/* Section 1: Strong AI Research Engine */}
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                강력한 AI 리서치 엔진
+              </h2>
+              <p className="text-lg text-gray-600 mb-4">
+                <span className="font-semibold text-gray-900">전 세계 1,100만 명이 사용하는 연구형 생성 AI</span>
+              </p>
+              <p className="text-gray-600 leading-relaxed">
+                LINER AI는 리서치에 특화된 생성형 AI 검색 엔진으로, <span className="font-semibold">정확한 출처와 근거 기반 답변</span>을 제공합니다.
+                <br />
+                <br />
+                2억 건 이상의 논문과 실시간 웹 데이터를 함께 검색해, 리서치·기획·아이디어 검증까지 단 한 번에 처리할 수 있습니다.
+              </p>
+            </div>
+
+            {/* Section 2: Global Recognition */}
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                글로벌이 인정한 기술력
+              </h2>
+              <p className="text-lg text-gray-600 mb-4">
+                <span className="font-semibold text-gray-900">a16z 선정, 2024년 Top 100 GenAI Consumer Apps 웹 부문 4위</span>
+              </p>
+              <p className="text-gray-600 leading-relaxed">
+                연세대 컴퓨터과학과 출신 개발자가 설계한 LINER는 단순 하이라이터에서 시작해, <span className="font-semibold">검색·요약·인용이 결합된 리서치형 AI</span>로 진화했습니다.
+                <br />
+                <br />
+                미국의 수많은 창업팀과 연구기관이 정교한 기획을 위해 LINER를 사용하고 있습니다.
+              </p>
+            </div>
+
+            {/* Section 3: Verified Accuracy */}
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                검증된 정확도와 압도적인 속도
+              </h2>
+              <ul className="space-y-3 text-gray-600">
+                <li className="flex items-start">
+                  <span className="text-blue-600 font-bold mr-3">•</span>
+                  <span><span className="font-semibold">정보 정확도 95%</span>, SimpleQA 벤치마크에서 ChatGPT 대비 약 <span className="font-semibold">30% 높은 신뢰도</span></span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-blue-600 font-bold mr-3">•</span>
+                  <span><span className="font-semibold">답변 속도 10배 향상</span>, 기다림 없이 바로 결과 확인</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-blue-600 font-bold mr-3">•</span>
+                  <span><span className="font-semibold">가설 생성, 문헌 조사, 설문 시뮬레이션, 인용 추천</span>까지 한 번에</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
