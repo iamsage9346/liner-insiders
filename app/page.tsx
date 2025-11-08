@@ -124,17 +124,17 @@ const LinerTeamsLanding: React.FC = () => {
     {
       icon: <Brain size={24} />,
       title: '정확성 1위',
-      description: 'SimpleQA 벤치마크에서 93.7로 1위 (Perplexity Pro·Gemini·GPT-4o 대비)'
+      description: 'SimpleQA 벤치마크에서 95.3점으로 1위 (Perplexity Pro: 90.6점, GPT-4o: 38.4점)'
     },
     {
       icon: <FileText size={24} />,
       title: '문장 단위 인용',
-      description: 'Scholar Mode에서 Line-by-Line 인용과 APA/MLA/Chicago 원클릭 서지 제공'
+      description: 'Line-by-Line 인용과 APA/MLA/Chicago 원클릭 서지로, 모든 응답에 문장 단위 출처 제공'
     },
     {
       icon: <Share2 size={24} />,
-      title: '출처가 보이는 답변',
-      description: '답변-증거-참고문헌까지 한 흐름으로 팀 내 검증·재사용 속도 빠름'
+      title: '팀 워크스페이스',
+      description: '자료는 한 곳에 태그·권한·버전으로, 딥 리서치는 \'문헌→핵심→표/인용\' 템플릿화로 2분 재탐색'
     }
   ];
 
@@ -195,7 +195,12 @@ const LinerTeamsLanding: React.FC = () => {
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   };
 
   const isFormValid = formData.company.trim() !== '' && 
@@ -229,28 +234,28 @@ const LinerTeamsLanding: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-academic-50 via-white to-scholarly-50">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-academic-200/50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <span className="text-xl font-bold text-gray-900">INSIDERS</span>
-              <span className="text-gray-400">×</span>
-              <span className="text-xl font-bold text-gray-900">LINER</span>
+          <div className="flex justify-between items-center h-20">
+            <div className="flex items-center space-x-3">
+              <span className="text-2xl font-serif font-semibold tracking-tight text-academic-900">INSIDERS</span>
+              <span className="text-academic-300">×</span>
+              <span className="text-2xl font-serif font-semibold tracking-tight text-academic-900">LINER</span>
             </div>
             
-            <div className="hidden md:flex items-center space-x-8">
-              <button onClick={() => scrollToSection('about-liner')} className="text-gray-600 hover:text-gray-900 transition">
+            <div className="hidden md:flex items-center space-x-10">
+              <button onClick={() => scrollToSection('about-liner')} className="text-sm font-medium text-academic-600 hover:text-academic-900 transition tracking-academic">
                 라이너 소개
               </button>
-              <button onClick={() => scrollToSection('about')} className="text-gray-600 hover:text-gray-900 transition">
+              <button onClick={() => scrollToSection('about')} className="text-sm font-medium text-academic-600 hover:text-academic-900 transition tracking-academic">
                 기능
               </button>
-              <button onClick={() => scrollToSection('benefits')} className="text-gray-600 hover:text-gray-900 transition">
+              <button onClick={() => scrollToSection('benefits')} className="text-sm font-medium text-academic-600 hover:text-academic-900 transition tracking-academic">
                 혜택
               </button>
-              <button onClick={() => scrollToSection('faq')} className="text-gray-600 hover:text-gray-900 transition">
+              <button onClick={() => scrollToSection('faq')} className="text-sm font-medium text-academic-600 hover:text-academic-900 transition tracking-academic">
                 FAQ
               </button>
             </div>
@@ -259,56 +264,70 @@ const LinerTeamsLanding: React.FC = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 text-white">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+      <section className="relative overflow-hidden bg-gradient-to-br from-academic-900 via-academic-800 to-academic-950 text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-academic-700/20 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40"></div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 lg:py-40">
           <div className="text-center">
             {/* Countdown Timer */}
-            <div className="mb-6 flex justify-center">
-              <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-white/20">
-                <span className="text-sm font-medium mr-4">남은 시간</span>
-                <div className="flex items-center space-x-2 text-lg font-mono">
-                  <span className="text-yellow-300">{formatNumber(timeLeft.days)}</span>
-                  <span className="text-white/70">일</span>
-                  <span className="text-yellow-300">:</span>
-                  <span className="text-yellow-300">{formatNumber(timeLeft.hours)}</span>
-                  <span className="text-white/70">시간</span>
-                  <span className="text-yellow-300">:</span>
-                  <span className="text-yellow-300">{formatNumber(timeLeft.minutes)}</span>
-                  <span className="text-white/70">분</span>
-                  <span className="text-yellow-300">:</span>
-                  <span className="text-yellow-300">{formatNumber(timeLeft.seconds)}</span>
-                  <span className="text-white/70">초</span>
+            <div className="mb-8 flex justify-center">
+              <div className="inline-flex items-center bg-white/5 backdrop-blur-md rounded-2xl px-8 py-4 border border-white/10 shadow-elegant">
+                <span className="text-sm font-medium mr-6 text-academic-200 tracking-academic">남은 시간</span>
+                <div className="flex items-center space-x-3 text-lg font-mono">
+                  <div className="flex flex-col items-center">
+                    <span className="text-2xl font-bold text-yellow-300">{formatNumber(timeLeft.days)}</span>
+                    <span className="text-xs text-white/60 mt-1">일</span>
+                  </div>
+                  <span className="text-yellow-300/50 text-xl">:</span>
+                  <div className="flex flex-col items-center">
+                    <span className="text-2xl font-bold text-yellow-300">{formatNumber(timeLeft.hours)}</span>
+                    <span className="text-xs text-white/60 mt-1">시간</span>
+                  </div>
+                  <span className="text-yellow-300/50 text-xl">:</span>
+                  <div className="flex flex-col items-center">
+                    <span className="text-2xl font-bold text-yellow-300">{formatNumber(timeLeft.minutes)}</span>
+                    <span className="text-xs text-white/60 mt-1">분</span>
+                  </div>
+                  <span className="text-yellow-300/50 text-xl">:</span>
+                  <div className="flex flex-col items-center">
+                    <span className="text-2xl font-bold text-yellow-300">{formatNumber(timeLeft.seconds)}</span>
+                    <span className="text-xs text-white/60 mt-1">초</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-              <Gift className="mr-2" size={20} />
-              <span className="text-sm font-medium">LIMITED TIME OFFER</span>
+            <div className="inline-flex items-center bg-scholarly-800/30 backdrop-blur-sm rounded-full px-5 py-2.5 mb-8 border border-scholarly-700/30">
+              <Gift className="mr-2.5" size={18} />
+              <span className="text-xs font-medium tracking-wider uppercase text-scholarly-200">Limited Time Offer</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-semibold mb-8 tracking-tight leading-tight">
               팀즈 좌석 구독 시 1좌석당
               <br />
               <span className="text-yellow-300">스타벅스 기프티콘 1개</span> 🎁
             </h1>
             
-            <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              AI 리서치 협업 툴, 라이너 팀즈
+            <p className="text-xl md:text-2xl text-academic-200 mb-4 max-w-2xl mx-auto font-semibold tracking-academic">
+              정확한 출처 기반 AI 리서치 협업 툴, 라이너 팀즈
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <p className="text-xs md:text-sm text-academic-300/80 mb-10 max-w-2xl mx-auto font-light">
+              ※ 기간 한정 | 주어진 공식 결제 링크에서 팀 플랜 결제 | 결제 확인 후 일괄 지급
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-5 justify-center">
               <button 
                 onClick={() => setShowPopup(true)}
-                className="inline-flex items-center px-8 py-4 bg-white text-blue-700 font-semibold rounded-lg hover:bg-gray-100 transition transform hover:scale-105 shadow-xl"
+                className="group inline-flex items-center px-10 py-4 bg-white text-academic-900 font-semibold rounded-xl hover:bg-academic-50 transition transform hover:scale-105 shadow-elegant-lg hover:shadow-2xl"
               >
                 지금 구독하기
-                <ArrowRight className="ml-2" size={20} />
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
               </button>
               <button 
                 onClick={() => scrollToSection('video')}
-                className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition"
+                className="inline-flex items-center px-10 py-4 bg-white/5 backdrop-blur-sm border-2 border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition shadow-elegant"
               >
                 <Play className="mr-2" size={20} />
                 데모 보기
@@ -319,72 +338,101 @@ const LinerTeamsLanding: React.FC = () => {
         
         {/* Wave decoration */}
         <div className="absolute bottom-0 left-0 right-0">
-          <svg className="w-full h-20" viewBox="0 0 1440 120" fill="none">
+          <svg className="w-full h-24" viewBox="0 0 1440 120" fill="none" preserveAspectRatio="none">
             <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
           </svg>
         </div>
       </section>
 
       {/* LINER Introduction Section */}
-      <section id="about-liner" className="py-20 bg-gradient-to-b from-white to-gray-50">
+      <section id="about-liner" className="pt-32 pb-28 bg-gradient-to-b from-white to-scholarly-50/30 relative">
+        {/* Background Decoration */}
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-academic-200 to-transparent"></div>
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Main Title */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center bg-blue-50 rounded-full px-4 py-2 mb-4">
-              <span className="text-sm font-medium text-blue-700">Why LINER?</span>
+          <div className="text-center mb-24">
+            <div className="inline-flex items-center gap-3 bg-academic-100/50 rounded-full px-6 py-3 mb-8 border border-academic-200 shadow-sm">
+              <div className="w-2 h-2 rounded-full bg-academic-600 animate-pulse"></div>
+              <span className="text-sm font-semibold text-academic-700 tracking-wider uppercase">Why LINER?</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              전 세계가 선택한 AI 리서치 파트너
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif font-semibold text-academic-900 mb-8 tracking-tight leading-[1.1]">
+              전 세계가 선택한<br />AI 리서치 파트너
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              1,100만 명의 연구자와 기업이 LINER와 함께 더 빠르고 정확한 인사이트를 얻고 있습니다
+            <div className="section-divider mb-8"></div>
+            <p className="text-xl md:text-2xl text-academic-600 max-w-3xl mx-auto font-light leading-relaxed">
+              1,100만 명의 연구자와 기업이 LINER와 함께<br className="hidden sm:block" />
+              더 빠르고 정확한 인사이트를 얻고 있습니다
             </p>
           </div>
 
           {/* Metrics Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition">
-              <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">1,100만+</div>
-              <div className="text-gray-600">글로벌 사용자</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
+            <div className="group bg-white rounded-3xl p-8 lg:p-10 text-center shadow-elegant hover:shadow-elegant-lg transition-all duration-500 border border-academic-100 hover:border-academic-300 hover:-translate-y-2">
+              <div className="text-5xl md:text-6xl font-serif font-bold text-academic-700 mb-4 group-hover:scale-110 transition-transform duration-500">1,100만+</div>
+              <div className="h-1 w-16 mx-auto mb-4 bg-gradient-to-r from-transparent via-academic-400 to-transparent rounded-full"></div>
+              <div className="text-academic-600 font-medium tracking-academic text-sm">글로벌 사용자</div>
             </div>
-            <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition">
-              <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">2억+</div>
-              <div className="text-gray-600">학술 논문 DB</div>
+            <div className="group bg-white rounded-3xl p-8 lg:p-10 text-center shadow-elegant hover:shadow-elegant-lg transition-all duration-500 border border-academic-100 hover:border-emerald-200 hover:-translate-y-2">
+              <div className="text-5xl md:text-6xl font-serif font-bold text-emerald-700 mb-4 group-hover:scale-110 transition-transform duration-500">2억+</div>
+              <div className="h-1 w-16 mx-auto mb-4 bg-gradient-to-r from-transparent via-emerald-400 to-transparent rounded-full"></div>
+              <div className="text-academic-600 font-medium tracking-academic text-sm">학술 논문 DB</div>
             </div>
-            <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition">
-              <div className="text-3xl md:text-4xl font-bold text-purple-600 mb-2">95%</div>
-              <div className="text-gray-600">정보 정확도</div>
+            <div className="group bg-white rounded-3xl p-8 lg:p-10 text-center shadow-elegant hover:shadow-elegant-lg transition-all duration-500 border border-academic-100 hover:border-purple-200 hover:-translate-y-2">
+              <div className="text-5xl md:text-6xl font-serif font-bold text-purple-700 mb-4 group-hover:scale-110 transition-transform duration-500">95%</div>
+              <div className="h-1 w-16 mx-auto mb-4 bg-gradient-to-r from-transparent via-purple-400 to-transparent rounded-full"></div>
+              <div className="text-academic-600 font-medium tracking-academic text-sm">정보 정확도</div>
             </div>
-            <div className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition">
-              <div className="text-3xl md:text-4xl font-bold text-orange-600 mb-2">10x</div>
-              <div className="text-gray-600">리서치 속도</div>
+            <div className="group bg-white rounded-3xl p-8 lg:p-10 text-center shadow-elegant hover:shadow-elegant-lg transition-all duration-500 border border-academic-100 hover:border-amber-200 hover:-translate-y-2">
+              <div className="text-5xl md:text-6xl font-serif font-bold text-amber-700 mb-4 group-hover:scale-110 transition-transform duration-500">10x</div>
+              <div className="h-1 w-16 mx-auto mb-4 bg-gradient-to-r from-transparent via-amber-400 to-transparent rounded-full"></div>
+              <div className="text-academic-600 font-medium tracking-academic text-sm">리서치 속도</div>
             </div>
           </div>
         </div>
+        
+        {/* Bottom Decoration */}
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-academic-200 to-transparent"></div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section id="about" className="pt-32 pb-28 bg-scholarly-50/30 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute top-0 right-0 w-1/3 h-full opacity-5">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-academic-400 to-transparent"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              {/* Section Label */}
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-sm font-semibold text-academic-600 tracking-wider uppercase">왜 LINER Teams인가?</span>
+                <div className="h-px flex-1 bg-gradient-to-r from-academic-300 to-transparent"></div>
+              </div>
+              
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-academic-900 mb-10 tracking-tight leading-tight">
                 강력한 AI 기능으로
                 <br />
-                팀 생산성 10배 향상
+                <span className="gradient-text">팀 생산성 10배 향상</span>
               </h2>
               
-              <div className="space-y-6">
+              <div className="space-y-8">
                 {features.map((feature, index) => (
-                  <div key={index} className="flex items-start">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mr-4 flex-shrink-0">
-                      {feature.icon}
+                  <div key={index} className="flex items-start group">
+                    <div className="relative">
+                      <div className="w-16 h-16 bg-gradient-to-br from-academic-100 to-academic-50 rounded-2xl flex items-center justify-center text-academic-700 mr-6 flex-shrink-0 group-hover:from-academic-200 group-hover:to-academic-100 transition-all duration-300 shadow-sm border border-academic-200 group-hover:scale-110 group-hover:shadow-elegant">
+                        {feature.icon}
+                      </div>
+                      {index < features.length - 1 && (
+                        <div className="absolute top-16 left-8 w-px h-8 bg-gradient-to-b from-academic-200 to-transparent"></div>
+                      )}
                     </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">
+                    <div className="flex-1 pt-1">
+                      <h3 className="font-semibold text-xl text-academic-900 mb-3 tracking-academic group-hover:text-academic-700 transition-colors">
                         {feature.title}
                       </h3>
-                      <p className="text-gray-600">
+                      <p className="text-academic-600 leading-relaxed text-base">
                         {feature.description}
                       </p>
                     </div>
@@ -392,23 +440,51 @@ const LinerTeamsLanding: React.FC = () => {
                 ))}
               </div>
               
-              <div className="mt-8 p-6 bg-blue-50 rounded-xl">
-                <p className="text-2xl font-bold text-blue-900 mb-2">
-                  1000만명 이상
-                </p>
-                <p className="text-gray-700">
-                  글로벌 팀이 LINER Teams를 사용 중입니다
-                </p>
+              <div className="mt-12 p-8 bg-gradient-to-br from-academic-900 to-academic-800 rounded-3xl border border-academic-700 shadow-elegant-lg relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-academic-700 rounded-full blur-3xl opacity-30"></div>
+                <div className="relative">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-1 h-12 bg-gradient-to-b from-yellow-400 to-amber-500 rounded-full"></div>
+                    <p className="text-4xl font-serif font-bold text-white">
+                      1000만명 이상
+                    </p>
+                  </div>
+                  <p className="text-academic-200 leading-relaxed text-lg font-light pl-6">
+                    글로벌 팀이 LINER Teams를 사용 중입니다
+                  </p>
+                </div>
               </div>
             </div>
             
-            <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl p-8">
+            <div className="relative lg:pl-10">
+              {/* Decorative Elements */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-academic-100 rounded-3xl -z-10 transform rotate-12"></div>
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-scholarly-100 rounded-3xl -z-10 transform -rotate-12"></div>
+              
+              <div className="aspect-square bg-gradient-to-br from-academic-100 via-scholarly-100 to-academic-50 rounded-3xl p-12 shadow-elegant-lg border border-academic-200 relative overflow-hidden">
+                {/* Grid Pattern Overlay */}
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAgTSAwIDIwIEwgNDAgMjAgTSAyMCAwIEwgMjAgNDAgTSAwIDMwIEwgNDAgMzAgTSAzMCAwIEwgMzAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgxMDIsMTE1LDE1MSwwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-30"></div>
+                
                 <img 
                   src="/dashboard-mockup.png" 
                   alt="LINER Teams Dashboard"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain opacity-90 relative z-10 drop-shadow-2xl"
                 />
+              </div>
+              
+              {/* Floating Badge */}
+              <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 bg-white px-8 py-4 rounded-2xl shadow-elegant-lg border border-academic-200">
+                <div className="flex items-center gap-3">
+                  <div className="flex -space-x-2">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-academic-400 to-academic-600 border-2 border-white"></div>
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 border-2 border-white"></div>
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 border-2 border-white"></div>
+                  </div>
+                  <div className="text-sm">
+                    <p className="font-semibold text-academic-900">1,100만+ 사용자</p>
+                    <p className="text-academic-600 text-xs">글로벌 신뢰도</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -416,27 +492,50 @@ const LinerTeamsLanding: React.FC = () => {
       </section>
 
       {/* Video Section */}
-      <section id="video" className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              1분만에 알아보는 LINER Teams
+      <section id="video" className="pt-32 pb-28 bg-white relative">
+        {/* Decorative Top Border */}
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-academic-300 to-transparent"></div>
+        
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            {/* Section Number */}
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <div className="h-px w-20 bg-gradient-to-r from-transparent to-academic-300"></div>
+              <span className="text-sm font-semibold text-academic-600 tracking-wider uppercase">데모 영상</span>
+              <div className="h-px w-20 bg-gradient-to-l from-transparent to-academic-300"></div>
+            </div>
+            
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-academic-900 mb-6 tracking-tight">
+              1분만에 알아보는<br />LINER Teams
             </h2>
-            <p className="text-lg text-gray-600">
+            <div className="section-divider mb-6"></div>
+            <p className="text-lg md:text-xl text-academic-600 font-light">
               실제 사용 모습을 확인해보세요
             </p>
           </div>
           
-          <div className="relative aspect-video bg-gray-900 rounded-2xl overflow-hidden shadow-2xl">
+          <div className="relative aspect-video bg-academic-900 rounded-3xl overflow-hidden shadow-elegant-lg border-2 border-academic-200 group">
+            {/* Decorative Corner Elements */}
+            <div className="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-academic-300/30 rounded-tl-lg"></div>
+            <div className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-academic-300/30 rounded-tr-lg"></div>
+            <div className="absolute bottom-4 left-4 w-12 h-12 border-b-2 border-l-2 border-academic-300/30 rounded-bl-lg"></div>
+            <div className="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-academic-300/30 rounded-br-lg"></div>
+            
             {!isVideoPlaying ? (
-              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-blue-600 to-purple-600">
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-academic-800 via-academic-900 to-academic-950">
+                {/* Background Pattern */}
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40"></div>
+                
                 <button
                   onClick={() => setIsVideoPlaying(true)}
-                  className="group relative"
+                  className="group/play relative z-10"
                 >
-                  <div className="absolute inset-0 bg-white rounded-full scale-110 animate-ping opacity-25"></div>
-                  <div className="relative w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition">
-                    <Play size={36} className="text-blue-600 ml-2" />
+                  <div className="absolute inset-0 bg-white rounded-full scale-100 group-hover/play:scale-110 animate-ping opacity-20"></div>
+                  <div className="relative w-28 h-28 bg-white rounded-full flex items-center justify-center shadow-elegant-lg group-hover/play:scale-110 group-hover/play:shadow-2xl transition-all duration-300">
+                    <Play size={40} className="text-academic-800 ml-2" />
+                  </div>
+                  <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
+                    <span className="text-white/80 text-sm font-medium">영상 재생하기</span>
                   </div>
                 </button>
               </div>
@@ -451,76 +550,119 @@ const LinerTeamsLanding: React.FC = () => {
       </section>
 
       {/* Benefits Section */}
-      <section id="benefits" className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+      <section id="benefits" className="pt-32 pb-28 bg-gradient-to-br from-scholarly-50/50 to-academic-50/30 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              스타벅스 기프티콘 프로모션 안내
+          <div className="text-center mb-20">
+            {/* Section Number */}
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <div className="h-px w-20 bg-gradient-to-r from-transparent to-academic-300"></div>
+              <span className="text-sm font-semibold text-academic-600 tracking-wider uppercase">프로모션 안내</span>
+              <div className="h-px w-20 bg-gradient-to-l from-transparent to-academic-300"></div>
+            </div>
+            
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-academic-900 mb-6 tracking-tight">
+              스타벅스 기프티콘<br />프로모션 안내
             </h2>
-            <p className="text-lg text-gray-600">
+            <div className="section-divider mb-6"></div>
+            <p className="text-lg md:text-xl text-academic-600 font-light">
               간단한 절차로 기프티콘을 받으세요
             </p>
           </div>
           
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
-            <div className="grid md:grid-cols-2 gap-8">
+          <div className="bg-white rounded-3xl shadow-elegant-lg p-10 md:p-16 border-2 border-academic-100 relative overflow-hidden">
+            {/* Decorative Background Elements */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-academic-50 to-transparent rounded-full blur-3xl opacity-50"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-scholarly-50 to-transparent rounded-full blur-3xl opacity-50"></div>
+            
+            <div className="grid md:grid-cols-2 gap-16 relative">
               <div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-6">
-                  환급 절차
-                </h3>
-                <ol className="space-y-4">
-                  <li className="flex items-start">
-                    <span className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center mr-3 flex-shrink-0 text-sm font-semibold">
-                      1
-                    </span>
-                    <div>
-                      <p className="font-medium text-gray-900">팀즈 플랜 구독</p>
-                      <p className="text-gray-600 text-sm mt-1">최소 2인 이상 팀 구독 신청</p>
+                <div className="flex items-center gap-3 mb-10">
+                  <div className="w-1 h-8 bg-gradient-to-b from-academic-600 to-academic-400 rounded-full"></div>
+                  <h3 className="text-3xl font-serif font-semibold text-academic-900 tracking-tight">
+                    환급 절차
+                  </h3>
+                </div>
+                <ol className="space-y-8">
+                  <li className="flex items-start group">
+                    <div className="relative">
+                      <div className="w-12 h-12 bg-gradient-to-br from-academic-700 to-academic-600 text-white rounded-2xl flex items-center justify-center mr-5 flex-shrink-0 font-bold shadow-elegant group-hover:scale-110 transition-transform duration-300">
+                        1
+                      </div>
+                      <div className="absolute top-12 left-6 w-px h-8 bg-gradient-to-b from-academic-300 to-transparent"></div>
+                    </div>
+                    <div className="flex-1 pt-1">
+                      <p className="font-semibold text-lg text-academic-900 mb-2 tracking-academic">팀즈 플랜 구독</p>
+                      <p className="text-academic-600 leading-relaxed">최소 2인 이상 팀 구독 신청</p>
                     </div>
                   </li>
-                  <li className="flex items-start">
-                    <span className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center mr-3 flex-shrink-0 text-sm font-semibold">
-                      2
-                    </span>
-                    <div>
-                      <p className="font-medium text-gray-900">인증 양식 제출</p>
-                      <p className="text-gray-600 text-sm mt-1">구독 후 7일 이내 제출</p>
+                  <li className="flex items-start group">
+                    <div className="relative">
+                      <div className="w-12 h-12 bg-gradient-to-br from-academic-700 to-academic-600 text-white rounded-2xl flex items-center justify-center mr-5 flex-shrink-0 font-bold shadow-elegant group-hover:scale-110 transition-transform duration-300">
+                        2
+                      </div>
+                      <div className="absolute top-12 left-6 w-px h-8 bg-gradient-to-b from-academic-300 to-transparent"></div>
+                    </div>
+                    <div className="flex-1 pt-1">
+                      <p className="font-semibold text-lg text-academic-900 mb-2 tracking-academic">인증 양식 제출</p>
+                      <p className="text-academic-600 leading-relaxed">구독 후 7일 이내 제출</p>
                     </div>
                   </li>
-                  <li className="flex items-start">
-                    <span className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center mr-3 flex-shrink-0 text-sm font-semibold">
+                  <li className="flex items-start group">
+                    <div className="w-12 h-12 bg-gradient-to-br from-academic-700 to-academic-600 text-white rounded-2xl flex items-center justify-center mr-5 flex-shrink-0 font-bold shadow-elegant group-hover:scale-110 transition-transform duration-300">
                       3
-                    </span>
-                    <div>
-                      <p className="font-medium text-gray-900">기프티콘 지급</p>
-                      <p className="text-gray-600 text-sm mt-1">검토 후 7일 이내 지급</p>
+                    </div>
+                    <div className="flex-1 pt-1">
+                      <p className="font-semibold text-lg text-academic-900 mb-2 tracking-academic">기프티콘 지급</p>
+                      <p className="text-academic-600 leading-relaxed">검토 후 7일 이내 지급</p>
                     </div>
                   </li>
                 </ol>
               </div>
               
               <div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-6">
-                  적용 조건
-                </h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <CheckCircle className="text-green-500 mr-3 flex-shrink-0 mt-0.5" size={20} />
-                    <span className="text-gray-700">최소 2인 이상 팀 구독</span>
+                <div className="flex items-center gap-3 mb-10">
+                  <div className="w-1 h-8 bg-gradient-to-b from-emerald-600 to-emerald-400 rounded-full"></div>
+                  <h3 className="text-3xl font-serif font-semibold text-academic-900 tracking-tight">
+                    적용 조건
+                  </h3>
+                </div>
+                <ul className="space-y-6">
+                  <li className="flex items-start group">
+                    <div className="w-6 h-6 rounded-lg bg-emerald-100 flex items-center justify-center mr-4 flex-shrink-0 mt-1 group-hover:bg-emerald-200 transition-colors">
+                      <CheckCircle className="text-emerald-600" size={16} />
+                    </div>
+                    <span className="text-academic-700 leading-relaxed text-lg">최소 2인 이상 팀 구독</span>
                   </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="text-green-500 mr-3 flex-shrink-0 mt-0.5" size={20} />
-                    <span className="text-gray-700">1좌석당 스타벅스 기프티콘 1개</span>
+                  <li className="flex items-start group">
+                    <div className="w-6 h-6 rounded-lg bg-emerald-100 flex items-center justify-center mr-4 flex-shrink-0 mt-1 group-hover:bg-emerald-200 transition-colors">
+                      <CheckCircle className="text-emerald-600" size={16} />
+                    </div>
+                    <span className="text-academic-700 leading-relaxed text-lg">1좌석당 스타벅스 기프티콘 1개</span>
                   </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="text-green-500 mr-3 flex-shrink-0 mt-0.5" size={20} />
-                    <span className="text-gray-700">1개월 이상 구독 유지</span>
+                  <li className="flex items-start group">
+                    <div className="w-6 h-6 rounded-lg bg-emerald-100 flex items-center justify-center mr-4 flex-shrink-0 mt-1 group-hover:bg-emerald-200 transition-colors">
+                      <CheckCircle className="text-emerald-600" size={16} />
+                    </div>
+                    <span className="text-academic-700 leading-relaxed text-lg">1개월 이상 구독 유지</span>
                   </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="text-green-500 mr-3 flex-shrink-0 mt-0.5" size={20} />
-                    <span className="text-gray-700">2025년 11월 20일까지 신청</span>
+                  <li className="flex items-start group">
+                    <div className="w-6 h-6 rounded-lg bg-emerald-100 flex items-center justify-center mr-4 flex-shrink-0 mt-1 group-hover:bg-emerald-200 transition-colors">
+                      <CheckCircle className="text-emerald-600" size={16} />
+                    </div>
+                    <span className="text-academic-700 leading-relaxed text-lg">2025년 11월 20일까지 신청</span>
                   </li>
                 </ul>
+                
+                {/* Call to Action Box */}
+                <div className="mt-10 p-6 bg-gradient-to-br from-academic-900 to-academic-800 rounded-2xl border border-academic-700">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Gift className="text-yellow-400" size={24} />
+                    <p className="text-white font-semibold text-lg">지금 바로 신청하세요!</p>
+                  </div>
+                  <p className="text-academic-200 text-sm leading-relaxed">
+                    프로모션 기간이 얼마 남지 않았습니다
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -529,13 +671,24 @@ const LinerTeamsLanding: React.FC = () => {
 
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 bg-gray-50">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+      <section id="faq" className="pt-32 pb-28 bg-scholarly-50/30 relative">
+        {/* Decorative Top Border */}
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-academic-300 to-transparent"></div>
+        
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-20">
+            {/* Section Number */}
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <div className="h-px w-20 bg-gradient-to-r from-transparent to-academic-300"></div>
+              <span className="text-sm font-semibold text-academic-600 tracking-wider uppercase">FAQ</span>
+              <div className="h-px w-20 bg-gradient-to-l from-transparent to-academic-300"></div>
+            </div>
+            
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-academic-900 mb-6 tracking-tight">
               자주 묻는 질문
             </h2>
-            <p className="text-lg text-gray-600">
+            <div className="section-divider mb-6"></div>
+            <p className="text-lg md:text-xl text-academic-600 font-light">
               궁금한 점이 있으신가요?
             </p>
           </div>
@@ -544,79 +697,100 @@ const LinerTeamsLanding: React.FC = () => {
             {faqItems.map((item, index) => (
               <div 
                 key={index}
-                className="bg-white rounded-xl shadow-sm overflow-hidden"
+                className="bg-white rounded-2xl shadow-elegant overflow-hidden border-2 border-academic-100 hover:border-academic-300 transition-all duration-300 group"
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
-                  className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition"
+                  className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-academic-50/50 transition-colors"
                 >
-                  <span className="font-medium text-gray-900">
+                  <span className="font-semibold text-academic-900 tracking-academic text-lg pr-4">
                     {item.question}
                   </span>
-                  {openFAQ === index ? (
-                    <ChevronUp className="text-gray-400" size={20} />
-                  ) : (
-                    <ChevronDown className="text-gray-400" size={20} />
-                  )}
+                  <div className={`transform transition-transform duration-300 flex-shrink-0 ${openFAQ === index ? 'rotate-180' : ''}`}>
+                    {openFAQ === index ? (
+                      <ChevronUp className="text-academic-600" size={24} />
+                    ) : (
+                      <ChevronDown className="text-academic-400" size={24} />
+                    )}
+                  </div>
                 </button>
                 
                 {openFAQ === index && (
-                  <div className="px-6 pb-4 text-gray-600">
-                    {item.answer}
+                  <div className="px-8 pb-6 text-academic-600 leading-relaxed border-t border-academic-100 pt-6 bg-academic-50/30 animate-fadeIn">
+                    <p className="text-base">{item.answer}</p>
                   </div>
                 )}
               </div>
             ))}
           </div>
           
-          <div className="mt-12 text-center">
-            <p className="text-gray-600 mb-4">
-              더 궁금한 점이 있으신가요?
-            </p>
-            <button className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition">
-              <Mail className="mr-2" size={18} />
-              iamsage9346@gmail.com로 문의하기
-            </button>
+          {/* Contact Box */}
+          <div className="mt-20 relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-academic-900 to-academic-800 rounded-3xl blur-xl opacity-20"></div>
+            <div className="relative bg-gradient-to-br from-academic-900 to-academic-800 rounded-3xl p-10 border border-academic-700 shadow-elegant-lg">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="text-center md:text-left">
+                  <p className="text-white font-semibold text-xl mb-2">더 궁금한 점이 있으신가요?</p>
+                  <p className="text-academic-200 font-light">언제든지 문의해 주세요. 빠르게 답변드리겠습니다.</p>
+                </div>
+                <button className="flex items-center gap-3 px-8 py-4 bg-white text-academic-900 font-semibold rounded-xl hover:bg-academic-50 transition-all duration-300 shadow-elegant hover:scale-105 whitespace-nowrap">
+                  <Mail size={20} />
+                  <span>이메일로 문의하기</span>
+                </button>
+              </div>
+              
+              <div className="mt-8 pt-8 border-t border-academic-700/50 flex flex-col sm:flex-row items-center justify-center gap-6 text-academic-300 text-sm">
+                <div className="flex items-center gap-2">
+                  <Mail size={16} />
+                  <span>iamsage9346@gmail.com</span>
+                </div>
+                <div className="hidden sm:block w-px h-4 bg-academic-700"></div>
+                <div className="flex items-center gap-2">
+                  <Phone size={16} />
+                  <span>010-4670-9346</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-academic-950 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-4 gap-12">
             <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <span className="text-xl font-bold">INSIDERS</span>
-                <span className="text-gray-500">×</span>
-                <span className="text-xl font-bold">LINER</span>
+              <div className="flex items-center space-x-3 mb-6">
+                <span className="text-xl font-serif font-semibold tracking-tight">INSIDERS</span>
+                <span className="text-academic-500">×</span>
+                <span className="text-xl font-serif font-semibold tracking-tight">LINER</span>
               </div>
-              <p className="text-gray-400 text-sm">
+              <p className="text-academic-400 text-sm leading-relaxed font-light">
                 AI로 팀의 리서치 속도를 혁신하세요
               </p>
             </div>  
             
             <div>
-              <h4 className="font-semibold mb-4">문의</h4>
-              <div className="space-y-2 text-gray-400 text-sm">
-                <p className="flex items-center">
-                  <Mail className="mr-2" size={16} />
+              <h4 className="font-semibold mb-6 tracking-academic text-academic-200">문의</h4>
+              <div className="space-y-3 text-academic-400 text-sm">
+                <p className="flex items-center font-light">
+                  <Mail className="mr-3" size={16} />
                   iamsage9346@gmail.com
                 </p>
-                <p className="flex items-center">
-                  <Phone className="mr-2" size={16} />
+                <p className="flex items-center font-light">
+                  <Phone className="mr-3" size={16} />
                   010-4670-9346
                 </p>
               </div>
               
-              <div className="flex space-x-4 mt-4">
+              <div className="flex space-x-4 mt-6">
               </div>
             </div>
           </div>
           
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-            <p>© 2025 LINER Teams. All rights reserved.</p>
-            <p className="mt-2">
+          <div className="border-t border-academic-800 mt-12 pt-10 text-center text-academic-400 text-sm">
+            <p className="font-light">© 2025 LINER Teams. All rights reserved.</p>
+            <p className="mt-3 font-light">
               본 프로모션은 INSIDERS와 LINER의 공식 파트너십으로 진행됩니다.
             </p>
           </div>
@@ -625,22 +799,22 @@ const LinerTeamsLanding: React.FC = () => {
 
       {/* Popup Modal */}
       {showPopup && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-academic-950/60 backdrop-blur-md">
+          <div className="bg-white rounded-3xl p-10 max-w-md w-full mx-4 shadow-elegant-lg border border-academic-200">
+            <h3 className="text-3xl font-serif font-semibold text-academic-900 mb-4 tracking-tight">
               지금 바로 시작하세요! 🚀
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-academic-600 mb-8 leading-relaxed">
               팀 정보를 입력하고 환급 혜택을 받으세요.
             </p>
             
-            <form onSubmit={handleSubscribe} className="space-y-4">
+            <form onSubmit={handleSubscribe} className="space-y-5">
               <input
                 type="text"
                 placeholder="회사/기관명"
                 value={formData.company}
                 onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                className="w-full px-5 py-4 border border-academic-300 rounded-xl focus:outline-none focus:border-academic-600 focus:ring-2 focus:ring-academic-200 transition"
                 required
               />
               <input
@@ -648,7 +822,7 @@ const LinerTeamsLanding: React.FC = () => {
                 placeholder="업무용 이메일"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                className="w-full px-5 py-4 border border-academic-300 rounded-xl focus:outline-none focus:border-academic-600 focus:ring-2 focus:ring-academic-200 transition"
                 required
               />
               <input
@@ -656,7 +830,7 @@ const LinerTeamsLanding: React.FC = () => {
                 placeholder="팀 인원 수"
                 value={formData.teamSize}
                 onChange={(e) => setFormData({ ...formData, teamSize: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                className="w-full px-5 py-4 border border-academic-300 rounded-xl focus:outline-none focus:border-academic-600 focus:ring-2 focus:ring-academic-200 transition"
                 required
               />
               <input
@@ -664,17 +838,17 @@ const LinerTeamsLanding: React.FC = () => {
                 placeholder="전화번호 (숫자만 입력)"
                 value={formData.phoneNumber}
                 onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value.replace(/[^0-9]/g, '') })}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                className="w-full px-5 py-4 border border-academic-300 rounded-xl focus:outline-none focus:border-academic-600 focus:ring-2 focus:ring-academic-200 transition"
                 required
               />
               
               <button
                 type="submit"
                 disabled={!isFormValid}
-                className={`w-full py-3 font-semibold rounded-lg transition ${
+                className={`w-full py-4 font-semibold rounded-xl transition shadow-elegant ${
                   isFormValid
-                    ? 'bg-blue-600 text-white hover:bg-blue-700 cursor-pointer'
-                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    ? 'bg-academic-700 text-white hover:bg-academic-800 cursor-pointer'
+                    : 'bg-academic-200 text-academic-400 cursor-not-allowed'
                 }`}
               >
                 구독 시작하기
@@ -683,7 +857,7 @@ const LinerTeamsLanding: React.FC = () => {
             
             <button
               onClick={() => setShowPopup(false)}
-              className="mt-4 w-full py-2 text-gray-600 hover:text-gray-900 transition"
+              className="mt-5 w-full py-3 text-academic-600 hover:text-academic-900 transition font-medium"
             >
               나중에 하기
             </button>
@@ -693,13 +867,13 @@ const LinerTeamsLanding: React.FC = () => {
 
       {/* Success Alert */}
       {showSuccess && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4 shadow-2xl text-center">
-            <div className="text-5xl mb-4">✅</div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-academic-950/60 backdrop-blur-md">
+          <div className="bg-white rounded-3xl p-10 max-w-md w-full mx-4 shadow-elegant-lg text-center border border-academic-200">
+            <div className="text-6xl mb-6">✅</div>
+            <h3 className="text-3xl font-serif font-semibold text-academic-900 mb-4 tracking-tight">
               신청이 완료되었습니다!
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-academic-600 mb-8 leading-relaxed">
               아래 링크에서 팀즈 플랜을 결제하면<br />스타벅스 기프티콘이 지급됩니다.
             </p>
             
@@ -707,14 +881,14 @@ const LinerTeamsLanding: React.FC = () => {
               href="https://hey.liner.com/d1ngazm"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full block py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition mb-3"
+              className="w-full block py-4 bg-academic-700 text-white font-semibold rounded-xl hover:bg-academic-800 transition mb-4 shadow-elegant"
             >
               지금 결제하러 가기 →
             </a>
 
             <button
               onClick={() => setShowSuccess(false)}
-              className="w-full py-2 text-gray-600 hover:text-gray-900 transition"
+              className="w-full py-3 text-academic-600 hover:text-academic-900 transition font-medium"
             >
               닫기
             </button>
