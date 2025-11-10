@@ -166,20 +166,20 @@ const LinerTeamsLanding: React.FC = () => {
   // FAQ data
   const faqItems: FAQItem[] = [
     {
-      question: '스타벅스 기프티콘은 어떻게 받나요?',
-      answer: '구독 후 7일 이내에 인증 양식을 제출하시면, 검토 후 1좌석당 스타벅스 기프티콘 1개를 지급해드립니다. 최소 2인 이상 팀 구독 시 적용됩니다.'
+      question: '50% 할인은 어떻게 받나요?',
+      answer: '이 페이지의 "지금 구독하기" 버튼을 클릭하여 우리의 공식 할인 링크를 획득하세요. 해당 링크를 통해 팀 플랜을 구독하면 결제 시 자동으로 50% 할인이 적용됩니다.'
     },
     {
-      question: '기존 개인 구독자도 기프티콘 대상인가요?',
+      question: '기존 개인 구독자도 할인 대상인가요?',
       answer: '이번 프로모션은 신규 팀즈 구독자를 대상으로 합니다. 기존 개인 구독에서 팀즈로 업그레이드하는 경우도 포함됩니다.'
     },
     {
       question: '팀즈 플랜의 장점은 무엇인가요?',
-      answer: '무제한 AI 요약, 팀 워크스페이스, 공유 라이브러리, 관리자 대시보드, 우선 고객 지원 등 협업에 최적화된 기능을 제공합니다.'
+      answer: '무제한 AI 요약, 팀 워크스페이스, 공유 라이브러리, 관리자 대시보드, 우선 고객 지원 등 협업에 최적화된 기능을 제공합니다. 50% 할인으로 더욱 경제적입니다!'
     },
     {
-      question: '최소 구독 기간이 있나요?',
-      answer: '월 단위 구독이 가능하며, 연간 구독 시 20% 할인이 적용됩니다. 기프티콘 프로모션은 1개월 이상 구독 유지 시 적용됩니다.'
+      question: '할인 기간은 언제까지인가요?',
+      answer: '이 프로모션은 2025년 11월 20일까지 진행됩니다. 그 이후에는 할인이 적용되지 않으니 서둘러 신청하세요!'
     }
   ];
 
@@ -304,9 +304,9 @@ const LinerTeamsLanding: React.FC = () => {
             </div>
             
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-semibold mb-8 tracking-tight leading-tight">
-              팀즈 좌석 구독 시 1좌석당
+              INSIDERS 링크로 구독하면
               <br />
-              <span className="text-yellow-300">스타벅스 기프티콘 1개</span> 🎁
+              <span className="text-yellow-300">50% 할인</span> 💰
             </h1>
             
             <p className="text-xl md:text-2xl text-academic-200 mb-4 max-w-2xl mx-auto font-semibold tracking-academic">
@@ -314,7 +314,7 @@ const LinerTeamsLanding: React.FC = () => {
             </p>
             
             <p className="text-xs md:text-sm text-academic-300/80 mb-10 max-w-2xl mx-auto font-light">
-              ※ 기간 한정 | 주어진 공식 결제 링크에서 팀 플랜 결제 | 결제 확인 후 일괄 지급
+              ※ 기간 한정 | 우리의 공식 결제 링크를 통해서만 할인 적용 | 즉시 할인가 적용
             </p>
             
             <div className="flex flex-col sm:flex-row gap-5 justify-center">
@@ -561,11 +561,11 @@ const LinerTeamsLanding: React.FC = () => {
             </div>
             
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold text-academic-900 mb-6 tracking-tight">
-              스타벅스 기프티콘<br />프로모션 안내
+              50% 할인 혜택<br />이 기간에만!
             </h2>
             <div className="section-divider mb-6"></div>
             <p className="text-lg md:text-xl text-academic-600 font-light">
-              간단한 절차로 기프티콘을 받으세요
+              우리의 링크를 통해 팀 플랜을 구독하면 즉시 50% 할인이 적용됩니다
             </p>
           </div>
           
@@ -579,7 +579,7 @@ const LinerTeamsLanding: React.FC = () => {
                 <div className="flex items-center gap-3 mb-10">
                   <div className="w-1 h-8 bg-gradient-to-b from-academic-600 to-academic-400 rounded-full"></div>
                   <h3 className="text-3xl font-serif font-semibold text-academic-900 tracking-tight">
-                    환급 절차
+                    할인 적용 방법
                   </h3>
                 </div>
                 <ol className="space-y-8">
@@ -591,8 +591,8 @@ const LinerTeamsLanding: React.FC = () => {
                       <div className="absolute top-12 left-6 w-px h-8 bg-gradient-to-b from-academic-300 to-transparent"></div>
                     </div>
                     <div className="flex-1 pt-1">
-                      <p className="font-semibold text-lg text-academic-900 mb-2 tracking-academic">팀즈 플랜 구독</p>
-                      <p className="text-academic-600 leading-relaxed">최소 2인 이상 팀 구독 신청</p>
+                      <p className="font-semibold text-lg text-academic-900 mb-2 tracking-academic">우리 링크 클릭</p>
+                      <p className="text-academic-600 leading-relaxed">"지금 구독하기" 버튼에서 할인 링크 획득</p>
                     </div>
                   </li>
                   <li className="flex items-start group">
@@ -603,8 +603,8 @@ const LinerTeamsLanding: React.FC = () => {
                       <div className="absolute top-12 left-6 w-px h-8 bg-gradient-to-b from-academic-300 to-transparent"></div>
                     </div>
                     <div className="flex-1 pt-1">
-                      <p className="font-semibold text-lg text-academic-900 mb-2 tracking-academic">인증 양식 제출</p>
-                      <p className="text-academic-600 leading-relaxed">구독 후 7일 이내 제출</p>
+                      <p className="font-semibold text-lg text-academic-900 mb-2 tracking-academic">팀 플랜 구독</p>
+                      <p className="text-academic-600 leading-relaxed">최소 2인 이상 팀 구독 신청</p>
                     </div>
                   </li>
                   <li className="flex items-start group">
@@ -612,8 +612,8 @@ const LinerTeamsLanding: React.FC = () => {
                       3
                     </div>
                     <div className="flex-1 pt-1">
-                      <p className="font-semibold text-lg text-academic-900 mb-2 tracking-academic">기프티콘 지급</p>
-                      <p className="text-academic-600 leading-relaxed">검토 후 7일 이내 지급</p>
+                      <p className="font-semibold text-lg text-academic-900 mb-2 tracking-academic">즉시 50% 할인 적용</p>
+                      <p className="text-academic-600 leading-relaxed">결제 시 자동으로 할인가 적용됨</p>
                     </div>
                   </li>
                 </ol>
@@ -637,13 +637,13 @@ const LinerTeamsLanding: React.FC = () => {
                     <div className="w-6 h-6 rounded-lg bg-emerald-100 flex items-center justify-center mr-4 flex-shrink-0 mt-1 group-hover:bg-emerald-200 transition-colors">
                       <CheckCircle className="text-emerald-600" size={16} />
                     </div>
-                    <span className="text-academic-700 leading-relaxed text-lg">1좌석당 스타벅스 기프티콘 1개</span>
+                    <span className="text-academic-700 leading-relaxed text-lg">INSIDERS 링크를 통한 구독</span>
                   </li>
                   <li className="flex items-start group">
                     <div className="w-6 h-6 rounded-lg bg-emerald-100 flex items-center justify-center mr-4 flex-shrink-0 mt-1 group-hover:bg-emerald-200 transition-colors">
                       <CheckCircle className="text-emerald-600" size={16} />
                     </div>
-                    <span className="text-academic-700 leading-relaxed text-lg">1개월 이상 구독 유지</span>
+                    <span className="text-academic-700 leading-relaxed text-lg">모든 팀 요금제에 50% 할인 적용</span>
                   </li>
                   <li className="flex items-start group">
                     <div className="w-6 h-6 rounded-lg bg-emerald-100 flex items-center justify-center mr-4 flex-shrink-0 mt-1 group-hover:bg-emerald-200 transition-colors">
@@ -874,7 +874,7 @@ const LinerTeamsLanding: React.FC = () => {
               신청이 완료되었습니다!
             </h3>
             <p className="text-academic-600 mb-8 leading-relaxed">
-              아래 링크에서 팀즈 플랜을 결제하면<br />스타벅스 기프티콘이 지급됩니다.
+              아래 링크에서 팀즈 플랜을 결제하면<br />50% 할인가가 자동 적용됩니다.
             </p>
             
             <a
@@ -883,7 +883,7 @@ const LinerTeamsLanding: React.FC = () => {
               rel="noopener noreferrer"
               className="w-full block py-4 bg-academic-700 text-white font-semibold rounded-xl hover:bg-academic-800 transition mb-4 shadow-elegant"
             >
-              지금 결제하러 가기 →
+              50% 할인으로 구독하기 →
             </a>
 
             <button
